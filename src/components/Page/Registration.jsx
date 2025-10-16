@@ -1,5 +1,5 @@
 import React from "react";
-import Loging from "../../assets/Loging.png";
+import RegistrationImg from "../../assets/RegistrationImg.png";
 
 const Registration = () => {
   return (
@@ -57,7 +57,9 @@ const Registration = () => {
             </button>
             <p className="text-center font-primary text-[13px] text-[#03014C] mt-[36px]">
               Already have an account?{" "}
-              <span className="text-[#EA6C00] font-bold">Sign In</span>
+              <span className="text-[#EA6C00] font-bold cursor-pointer">
+                Sign In
+              </span>
             </p>
           </div>
         </div>
@@ -67,8 +69,8 @@ const Registration = () => {
       <div className="w-1/2">
         <img
           className="h-screen w-full object-cover"
-          src={Loging}
-          alt="Login Visual"
+          src={RegistrationImg}
+          alt="Registration Visual"
         />
       </div>
     </div>
