@@ -1,6 +1,7 @@
 import React from 'react'
 import LoginImg from '../../assets/LoginImg.png'
 import Google from '../../assets/Google.png'
+import { Link } from 'react-router'
 const Login = () => {
   return (
     <div className="flex items-center">
@@ -48,9 +49,10 @@ const Login = () => {
                 </button>
                 <p className="font-primary text-[13px] text-[#03014C] mt-[36px]">
                   Don’t have an account ?{" "}
+                  <Link to="/">
                   <span className="text-[#EA6C00] font-bold cursor-pointer">
                     Sign In
-                  </span>
+                  </span></Link>
                 </p>
               </div>
             </div>
