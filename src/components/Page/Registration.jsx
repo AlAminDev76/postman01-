@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RegistrationImg from "../../assets/RegistrationImg.png";
 import { Link } from "react-router-dom";
+import { FaEye,FaEyeSlash } from "react-icons/fa";
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +10,8 @@ const Registration = () => {
   const [emailError, setEmailError] = useState("");
   const [fullNameError, setFullNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+ const [show, setShow] = useState (false)
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -111,12 +114,19 @@ const Registration = () => {
               Password
             </p>
             <input
-              type="password"
-              value={password}
+              type={show ? "text" : "password"}
+              
               onChange={handlePassword}
               className="w-full py-[26px] pr-[66px] pl-[52px] border-2 border-[#B8B9CE] rounded-[9px]"
               placeholder="Password"
             />
+            <div className="absolute top-[40%] right-[20px] ">
+              {
+                show ? <FaEye onClick={()=> setShow(!show)} size={20} />:  <FaEyeSlash onClick={()=> setShow(!show)} size={20} />
+              }
+             
+
+            </div>
             {passwordError && (
               <p className="bg-red-500 px-2 text-white rounded text-[10px] mt-2">
                 {passwordError}

@@ -1,6 +1,9 @@
 import React from "react";
 import Registration from "./components/Page/Registration";
 import Login from "./components/Page/Login";
+
+
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
