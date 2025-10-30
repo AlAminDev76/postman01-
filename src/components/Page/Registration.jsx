@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import RegistrationImg from "../../assets/RegistrationImg.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router";
 import { FaEye,FaEyeSlash } from "react-icons/fa";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+
+
 
 const Registration = () => {
+  const auth = getAuth()
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [fullNameError, setFullNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate()
 
  const [show, setShow] = useState (false)
 
@@ -51,16 +57,29 @@ const Registration = () => {
       setPasswordError("Password must be at least 6 characters");
      
     }
-
-   
       console.log(email, fullName,password);
-      
+      if(email && fullName && password && (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+      createUserWithEmailAndPassword(auth, email, password)
+  .then((user) => {
+    console.log(user, "user");
+    toast.success("Registration Successfully  Done")
+    setTimeout(() => {
+    navigate("/Login")
+    },300)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+     }
      
     
   };
 
   return (
     <div className="flex items-center min-h-screen">
+      
       <div className="w-1/2 flex justify-end mr-[69px]">
         <div>
           <h3 className="font-secondary text-[34px] font-bold text-[#11175D]">
