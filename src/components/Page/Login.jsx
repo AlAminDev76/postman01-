@@ -83,7 +83,7 @@ const Login = () => {
 
 
 
-          {/* Password */}
+         
           <div className="w-[368px] relative mt-[39px]">
             <p className="absolute top-[-10px]  font-primary text-[13px]   text-[#707070]">
               Password
@@ -109,7 +109,7 @@ const Login = () => {
             )}
           </div>
 
-          {/* Sign Up Button */}
+          
           <div className="w-[368px]">
             <button
               onClick={handleLogin}
@@ -127,7 +127,7 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right Side (Image Section) */}
+      
       <div className="w-1/2">
         <img
           className="h-screen w-full object-cover"
