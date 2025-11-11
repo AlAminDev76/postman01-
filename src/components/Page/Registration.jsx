@@ -65,13 +65,16 @@ const Registration = () => {
      console.log(email,fullName,password)
      
 if(email&&fullName&&password&&(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){
+  setLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
+    
       .then((user) => {
         console.log(user,"user");
-        toast.success("Registration successful!");
+        toast.success("Registration Successful! Please Verify Your Email");
         setTimeout(() => {
           navigate("/login");
-        }, 2000);
+        }, 3000);
+         setLoading(false)
       })
      .catch((error) => {
   const errorCode = error.code;
@@ -79,11 +82,13 @@ if(email&&fullName&&password&&(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.t
   if (errorCode.includes("auth/email-already-in-use")) {
     toast.error(" This email already used")
   }
-    setLoading(false);  
-    setFullName("");
+   
+}).finally(()=>{
+  
+   setFullName ("");
 setEmail("");
 setPassword("");
-});
+})
 
   };
   }
@@ -166,24 +171,30 @@ setPassword("");
          
           <div className="w-[368px]">
           <div>
-  {loading ? (
-    <Oval
-      visible={true}
-      height={80}
-      width={80}
-      color="#4fa94d"
-      ariaLabel="oval-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-    />
-  ) : (
+  
     <button
       onClick={handleSignUp}
       className="w-full mt-[70px] bg-primary py-5 rounded-full text-[20px] text-white font-secondary font-semibold cursor-pointer"
-    >
-      Sign Up
+    >{
+      loading ?
+       <div className="flex justify-center">
+        <Oval
+      visible={true}
+      height={20}
+      width={200}
+      color="#fff"
+      ariaLabel="oval-loading "
+      wrapperStyle={{}}
+      wrapperClass=""
+    />
+       </div>
+    :
+  "Sign Up"
+    }
+      
+    
     </button>
-  )}
+
 </div>
 
 
